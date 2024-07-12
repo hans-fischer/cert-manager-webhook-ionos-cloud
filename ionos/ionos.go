@@ -27,8 +27,7 @@ type ionosDNSProviderConfig struct {
 	// to be decoded.
 	// These fields will be set by users in the
 	// `issuer.spec.acme.dns01.providers.webhook.config` field.
-	PublicKeySecretRef corev1.SecretKeySelector `json:"publicKeySecretRef"`
-	SecretKeySecretRef corev1.SecretKeySelector `json:"secretKeySecretRef"`
+	ApiKeySecretRef 	 corev1.SecretKeySelector `json:"ApiKeySecretRef"`
 	ZoneName           string                   `json:"zoneName"`
 	ApiUrl             string                   `json:"apiUrl"`
 }
@@ -114,18 +113,15 @@ func (e *ionosSolver) clientInit(ch *acme.ChallengeRequest) (Config, error) {
 	config.ApiUrl = cfg.ApiUrl
 
 	if config.ApiUrl == "" {
-		config.ApiUrl = "https://api.hosting.ionos.com/dns/v1"
+		config.ApiUrl = "https://dns.de-fra.ionos.com"
 	}
 
-	secretKey, err := e.getSecret(cfg.SecretKeySecretRef, ch.ResourceNamespace)
+	apiKey, err := e.getSecret(cfg.ApiKeySecretRef, ch.ResourceNamespace)
 	if err != nil {
 		return config, err
 	}
-	publicKey, err := e.getSecret(cfg.PublicKeySecretRef, ch.ResourceNamespace)
-	if err != nil {
-		return config, err
-	}
-	config.ApiKey = publicKey + "." + secretKey
+
+	config.ApiKey = apiKey
 
 	e.ionosClient.SetConfig(e.context, &config)
 

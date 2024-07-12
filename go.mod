@@ -1,4 +1,4 @@
-module github.com/fabmade/cert-manager-webhook-ionos
+module github.com/hans-fischer/cert-manager-webhook-ionos-cloud
 
 go 1.22.0
 

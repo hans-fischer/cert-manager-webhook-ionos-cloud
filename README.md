@@ -9,15 +9,15 @@ see: https://cert-manager.io/docs/configuration/acme/dns01/webhook/
 
 see: https://cert-manager.io/docs/installation/kubernetes/
 
-### Install webhook 
+### Install webhook
 
 Add helm repo
 
-`helm repo add cert-manager-webhook-ionos https://fabmade.github.io/cert-manager-webhook-ionos`
+`helm repo add cert-manager-webhook-ionos-cloud https://hans-fischer.github.io/cert-manager-webhook-ionos-cloud`
 
 install helm chart
 
-`helm install cert-manager-webhook-ionos cert-manager-webhook-ionos/cert-manager-webhook-ionos -ncert-manager`
+`helm install cert-manager-webhook-ionos-cloud cert-manager-webhook-ionos-cloud/cert-manager-webhook-ionos-cloud -ncert-manager`
 
 add secret
 
@@ -53,15 +53,12 @@ spec:
     solvers:
       - dns01:
           webhook:
-            groupName: acme.fabmade.de
+            groupName: acme.hans-fischer.de
             solverName: ionos
             config:
               apiUrl: https://api.hosting.ionos.com/dns/v1
-              publicKeySecretRef:
+              ApiKeySecretRef:
                 key: IONOS_PUBLIC_PREFIX
-                name: ionos-secret
-              secretKeySecretRef:
-                key: IONOS_SECRET
                 name: ionos-secret
 ```
 add prod issuer
@@ -84,15 +81,12 @@ spec:
     solvers:
       - dns01:
           webhook:
-            groupName: acme.fabmade.de
+            groupName: acme.hans-fischer.de
             solverName: ionos
             config:
               apiUrl: https://api.hosting.ionos.com/dns/v1
-              publicKeySecretRef:
+              ApiKeySecretRef:
                 key: IONOS_PUBLIC_PREFIX
-                name: ionos-secret
-              secretKeySecretRef:
-                key: IONOS_SECRET
                 name: ionos-secret
 ```
 
@@ -144,7 +138,7 @@ https://cert-manager.io/docs/faq/kubed/
 
 ### Uninstall webhook
 
-```helm uninstall cert-manager-webhook-ionos -ncert-manager```
+```helm uninstall cert-manager-webhook-ionos-cloud -ncert-manager```
 
 ### Running the test suite
 

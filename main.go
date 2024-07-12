@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/cert-manager/cert-manager/pkg/acme/webhook/cmd"
-	"github.com/fabmade/cert-manager-webhook-ionos/ionos"
+	"github.com/hans-fischer/cert-manager-webhook-ionos-cloud/ionos"
 	"os"
 )
 

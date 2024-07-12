@@ -1,12 +1,8 @@
 {
   "zoneName": "",
   "apiUrl" : "https://api.hosting.ionos.com/dns/v1",
-  "publicKeySecretRef": {
+  "ApiKeySecretRef": {
     "name": "ionos-secret",
     "key": "IONOS_PUBLIC_PREFIX"
-  },
-  "secretKeySecretRef": {
-    "name": "ionos-secret",
-    "key": "IONOS_SECRET"
   }
 }

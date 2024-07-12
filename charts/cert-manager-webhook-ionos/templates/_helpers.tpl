@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "cert-manager-webhook-ionos.name" -}}
+{{- define "cert-manager-webhook-ionos-cloud.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "cert-manager-webhook-ionos.fullname" -}}
+{{- define "cert-manager-webhook-ionos-cloud.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,22 +27,22 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "cert-manager-webhook-ionos.chart" -}}
+{{- define "cert-manager-webhook-ionos-cloud.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "cert-manager-webhook-ionos.selfSignedIssuer" -}}
-{{ printf "%s-selfsign" (include "cert-manager-webhook-ionos.fullname" .) }}
+{{- define "cert-manager-webhook-ionos-cloud.selfSignedIssuer" -}}
+{{ printf "%s-selfsign" (include "cert-manager-webhook-ionos-cloud.fullname" .) }}
 {{- end -}}
 
-{{- define "cert-manager-webhook-ionos.rootCAIssuer" -}}
-{{ printf "%s-ca" (include "cert-manager-webhook-ionos.fullname" .) }}
+{{- define "cert-manager-webhook-ionos-cloud.rootCAIssuer" -}}
+{{ printf "%s-ca" (include "cert-manager-webhook-ionos-cloud.fullname" .) }}
 {{- end -}}
 
-{{- define "cert-manager-webhook-ionos.rootCACertificate" -}}
-{{ printf "%s-ca" (include "cert-manager-webhook-ionos.fullname" .) }}
+{{- define "cert-manager-webhook-ionos-cloud.rootCACertificate" -}}
+{{ printf "%s-ca" (include "cert-manager-webhook-ionos-cloud.fullname" .) }}
 {{- end -}}
 
-{{- define "cert-manager-webhook-ionos.servingCertificate" -}}
-{{ printf "%s-webhook-tls" (include "cert-manager-webhook-ionos.fullname" .) }}
+{{- define "cert-manager-webhook-ionos-cloud.servingCertificate" -}}
+{{ printf "%s-webhook-tls" (include "cert-manager-webhook-ionos-cloud.fullname" .) }}
 {{- end -}}
