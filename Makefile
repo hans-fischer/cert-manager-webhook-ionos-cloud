@@ -2,7 +2,7 @@ OS ?= $(shell go env GOOS)
 ARCH ?= $(shell go env GOARCH)
 
 IMAGE_NAME := "hansfischer/cert-manager-webhook-ionos-cloud"
-IMAGE_TAG := "1.0.0"
+IMAGE_TAG := "1.0.1"
 
 OUT := $(shell pwd)/_out
 TEST := $(shell pwd)/_test
