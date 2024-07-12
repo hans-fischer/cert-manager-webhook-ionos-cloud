@@ -78,7 +78,7 @@ func (e *IonosClient) callDNSApi(url string, method string, body io.Reader, conf
 	}
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("X-API-Key", config.ApiKey)
+	req.Header.Set("Authorization", "Bearer " . config.ApiKey)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
